@@ -8,7 +8,7 @@ CREATE OR REPLACE FUNCTION tirggerBFunc() RETURNS TRIGGER AS $$
 	where AccountNum = OLD.AccountNum; 
 	 if NEW.Balance < Overdraft_
 		then 
-			raise notice 'new balance: % allowed overDraft: %',NEW.balance, Overdraft_;
+			/*raise notice 'new balance: % allowed overDraft: %',NEW.balance, Overdraft_;*/
 			RAISE EXCEPTION 'Customer % cant have balance lower than %',CustomerID_, Overdraft_;
 	else 
 		return NEW;
