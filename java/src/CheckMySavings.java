@@ -69,6 +69,10 @@ public class CheckMySavings
             pstmt = con.prepareStatement(getAccountSavings);
             pstmt.setInt(1, AccountNum);
             ResultSet rs = pstmt.executeQuery();
+            if (!rs.isBeforeFirst() ) {
+                return -1;
+            }
+//            rs.beforeFirst();
             Double aggregatedSavings = 0D;
             while (rs.next()) {
                 Date currentDepositDate = rs.getDate("depositdate");
