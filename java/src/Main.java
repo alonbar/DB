@@ -12,6 +12,7 @@ public class Main {
 
 
         CheckMySavings.init("alonba");
+        double b = CheckMySavings.checkMySavings(3, Date.valueOf("2011-12-01"));
         CheckMySavings.close();
     }
 }
