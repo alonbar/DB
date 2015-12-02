@@ -12,7 +12,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER triggerD on AccountBalance;
 
 CREATE TRIGGER triggerD
 after insert or update or delete on AccountBalance

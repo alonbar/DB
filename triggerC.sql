@@ -5,7 +5,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER triggerCOnActions on Actions;
 
 CREATE TRIGGER triggerCOnActions
 BEFORE insert on Actions
@@ -19,7 +18,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER triggerCOnSavings on Savings;
 
 CREATE TRIGGER triggerCOnSavings
 BEFORE insert on Savings
