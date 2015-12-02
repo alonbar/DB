@@ -35,7 +35,7 @@ public class CheckMySavings
 
     }
 
-    public static double calculateSignleDeposit(Date openDate, double deposit, Date depositDate, int numOfYears, float interest) {
+    public static float calculateSignleDeposit(Date openDate, float deposit, Date depositDate, int numOfYears, float interest) {
 
         depositDate.setYear(depositDate.getYear() + numOfYears);
         Date candidateDate = new Date(depositDate.getTime());
@@ -48,14 +48,24 @@ public class CheckMySavings
         }
     }
 
-    public static double calculateSignleDeposit(double deposit, int numOfYears, float interest) {
+    public static float calculateSignleDeposit(float deposit, int numOfYears, float interest) {
+//        double agg = 0;
+//        int tempNumOfYears = numOfYears;
+//        while (tempNumOfYears> 0)
+//        {
+//            agg += agg * 1.4;
+//            tempNumOfYears-=1;
+//        }
+
+
         if (numOfYears == 1)
         {
 
             return deposit * (1 + interest);
         }
         else {
-            return (deposit + calculateSignleDeposit(deposit, numOfYears - 1, interest)) * (1 + interest);
+            float temp = (deposit + calculateSignleDeposit(deposit, numOfYears - 1, interest)) * (1 + interest);
+            return temp;
         }
     }
 
@@ -73,12 +83,13 @@ public class CheckMySavings
                 return -1;
             }
 //            rs.beforeFirst();
-            Double aggregatedSavings = 0D;
+            float aggregatedSavings = 0f;
+            float tempf = 0f;
             while (rs.next()) {
                 Date currentDepositDate = rs.getDate("depositdate");
                 int currentNumOfYears = rs.getInt("numOfYears");
                 float currentInterest = rs.getFloat("interest");
-                double currentDeposit = rs.getDouble("deposit");
+                float  currentDeposit = rs.getFloat("deposit");
                 aggregatedSavings = aggregatedSavings + calculateSignleDeposit(openDate, currentDeposit, currentDepositDate, currentNumOfYears, currentInterest);
             }
             pstmt.close();

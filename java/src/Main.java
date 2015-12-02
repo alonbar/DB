@@ -10,10 +10,15 @@ public class Main {
 //        }
 //        stmt.close();  rs.close(); con.close();
 
-
+        float aaa = 28.28f;
+        Double d = new Double(aaa);
+        double p = d.doubleValue();
+        double f = (double)aaa;
         CheckMySavings.init("alonba");
-        double b = CheckMySavings.checkMySavings(4, Date.valueOf("2019-11-01"));
+        double b = CheckMySavings.checkMySavings(14, Date.valueOf("2018-11-01"));
         System.out.println("result:" +  Double.toString(b));
+
+
         CheckMySavings.close();
     }
 }
